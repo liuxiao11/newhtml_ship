@@ -1,0 +1,109 @@
+<!--# include virtual='/common/header.html' -->
+<title>个人信息</title>
+<style>
+    .tabClick {background: #ffffff;overflow: hidden}
+    .tabClick li.active a {color: RGBA(93, 120, 167, 1);transition: 0.1s;font-weight: bold;}
+    .lineDiv {background: RGBA(93, 120, 167, 1);height: 4px;width: 72px;margin-left: 19px;margin-top: -3px}
+    .com-model1 {width: 1160px;height: 62px;background: rgba(255, 255, 255, 1);border-radius: 4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .com-model1 button {border: none;width: 60px;height: 22px;background: RGBA(93, 120, 167, 1);border-radius: 4px;font-size: 12px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);float: right;margin-top: 20px;margin-right: 20px;}
+    .com-model1 ul li a {margin-left: 20px;margin-right: 29px;line-height: 62px;float: left;font-size: 18px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(153, 153, 153, 1);}
+    .per-model2{font-size:16px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(21,43,76,1);width:1160px;height:238px;background:rgba(255,255,255,1);border-radius:4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .per-model2 span {font-size:16px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(21,43,76,1);margin-left: 20px;padding-top: 20px;display: block;}
+    .per-model2 table{font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:RGBA(51, 51, 51, 1);margin-left: 121px;margin-top: 10px;width: 70%;}
+    .per-model2 .avatar{width:118px;height: 34px;opacity:0.58;background-color: white;margin-top: -36px;font-size:14px;font-family:MicrosoftYaHei;font-weight:400;text-align: center;}
+    .per-model3{width:1160px;height:214px;background:rgba(255,255,255,1);border-radius:4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .per-model3 span {font-size:16px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(21,43,76,1);margin-left: 20px;padding-top: 20px;display: block;}
+    .per-model3 button{font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(93,120,167,1);width:70px;height:22px;border:1px solid rgba(93,120,167,1);border-radius:4px;background-color: white;}
+    .per-model3 table{font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:RGBA(51, 51, 51, 1);margin-left: 120px;margin-top: 10px;width: 70%;height: 135px;}
+</style>
+</head>
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+
+    <div class="container">
+        <div class="com-model1">
+            <ul class="tabClick">
+                <li class="active"><a href="person.html">个人信息</a></li>
+                <li><a href="company.html">企业信息</a></li>
+                <li><a href="power.html">权限信息</a></li>
+            </ul>
+            <div class="lineDiv"><!--移动的div--></div>
+        </div>
+
+
+        <div class="per-model2">
+            <div>
+                <span>基础信息</span>
+            </div>
+            <div>
+                <table border="0">
+                    <tr>
+                        <td rowspan="3">
+                            <img src="images/avatar.jpg" alt="" style="width:118px;height:118px;border-radius:50%;">
+                            <div class="avatar">
+                                <a href="#" style="color :#4B4F54;margin-top: 7px;display: inline-block">修改头像</a>
+                            </div>
+                            <font
+                                style="font-size:14px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(51,51,51,1);margin-left: 30px;display: block">dasdsa</font>
+                        </td>
+                        <td>性别: 男</td>
+                        <td class="zuoyi">联系手机：18500197939</td>
+                    </tr>
+                    <tr>
+                        <td>部门: 海务部</td>
+                        <td class="zuoyi">联系邮箱：nmxw@qq.com</td>
+                    </tr>
+                    <tr>
+                        <td>职务: 调度员</td>
+                        <td class="zuoyi">管理船舶 : 远东A13987,胶南A13987</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="per-model3">
+            <div>
+                <span>安全信息</span>
+            </div>
+            <div>
+                <table border="0">
+                    <tr>
+                        <td>绑定邮箱: nmxw@qq.com</td>
+                        <td class="zzz">
+                            <button>邮箱解绑</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>绑定手机：18500197939</td>
+                        <td class="zzz">
+                            <button>手机解绑</button>
+                            <font style="color: RGBA(153, 153, 153, 1);font-size: 12px;margin-left: 20px">绑定手机可用于快速登录账号及通过验证码修改密码</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>登录密码：S082727</td>
+                        <td class="zzz">
+                            <button>重置密码</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+    <!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function () {
+        require(['controller/index']);
+    });
+</script>

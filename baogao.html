@@ -1,0 +1,172 @@
+<!--# include virtual='/common/header.html' -->
+<title>全部-船舶报告</title>
+<style>
+    .tabClick{ background: #ffffff; overflow: hidden}
+    .tabClick li.active a{ color: RGBA(93, 120, 167, 1); transition: 0.1s; font-weight: bold ;}
+    .lineDiv{ background: RGBA(93, 120, 167, 1); height: 4px; width: 36px;margin-left: 19px;margin-top: -3px}
+    .com-model1 {width: 1160px;height: 62px;background: rgba(255, 255, 255, 1);border-radius: 4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .com-model1 button{border: none;width:60px;height:22px;background:RGBA(93, 120, 167, 1);border-radius:4px;font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(255,255,255,1);float: right;margin-top: 20px;margin-right: 20px;}
+    .com-model1 ul li a {margin-left: 20px;margin-right: 29px;line-height: 62px;float: left;font-size: 18px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(153, 153, 153, 1);}
+    .pow-model1 table{border-radius:4px;background:rgba(255,255,255,1);margin-top: 20px;box-shadow: 0 2px 10px 1px #ccc;}
+    .pow-model1 table tr th {font-size: 16px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);background: RGBA(93, 120, 167, 1);border-width: 1px;padding: 8px;border-color: RGBA(255, 255, 255, 1);}
+    .pow-model1 table tr td {font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(21, 43, 76, 1);padding: 8px;border: none;}
+    .pow-model1 table tr:nth-child(odd) {background: RGBA(246, 246, 246, 1);}
+    .pow-model1 table tr:nth-child(even) {background: #fff;}
+    .bao-model1 {width: 1160px;height: 72px;background: rgba(255, 255, 255, 1);border-radius: 4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .bao-model1 ul li {margin-left: 19px;margin-right: 20px;line-height: 72px;float: left;font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(153, 153, 153, 1);}
+    .bao-model1 button {border: none;width: 60px;height: 20px;background: RGBA(93, 120, 167, 1);border-radius: 4px;font-size: 12px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);margin-left: 20px;}
+    .bao-model1 a {font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(93, 120, 167, 1);margin-left: 70px;}
+    .bao-model1 select {width: 150px;height: 32px;border: 1px solid RGBA(242, 242, 242, 1);border-radius: 4px;margin-left: 10px;font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: RGBA(51, 51, 51, 1);}
+</style>
+</head>
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+
+    <div class="container">
+
+        <div class="com-model1">
+            <ul class="tabClick">
+                <li class="active"><a href="baogao.html">全部</a></li>
+                <li><a href="baogao-del.html">已删除</a></li>
+                <button><img src="images/dc.png" alt="" style="">导出</button>
+            </ul>
+
+            <div class="lineDiv"><!--移动的div--></div>
+        </div>
+
+        <div class="bao-model1">
+            <ul>
+                <li>
+                    船舶
+                    <select id="_select">
+                        <option value="1">请选择船舶</option>
+                        <option value="1">11</option>
+                        <option value="1">22</option>
+                        <option value="1">33</option>
+                    </select>
+                </li>
+                <li>
+                    航次
+                    <select id="_select1">
+                        <option value="1">请选择航次</option>
+                        <option value="1">11</option>
+                        <option value="1">22</option>
+                        <option value="1">33</option>
+                    </select>
+                </li>
+                <li>
+                    报告类型
+                    <select id="_select2">
+                        <option value="1">请选择报告类型</option>
+                        <option value="1">11</option>
+                        <option value="1">22</option>
+                        <option value="1">33</option>
+                    </select>
+                </li>
+                <li>
+                    <select id="_select3">
+                        <option value="1">请选择时间</option>
+                        <option value="1">11</option>
+                        <option value="1">22</option>
+                        <option value="1">33</option>
+                    </select>
+                    <button class="button1">
+                        搜索
+                    </button>
+                </li>
+                <li>
+                    <a href="#">
+                        +新增
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="pow-model1">
+
+            <table border="0" style="width: 100%;text-align: center;">
+                    <tr>
+                        <th>序号</th>
+                        <th>船名</th>
+                        <th>航次</th>
+                        <th>类型</th>
+                        <th>报告时间</th>
+                        <th>航程（nm）</th>
+                        <th>航时（h）</th>
+                        <th>主机转速</th>
+                        <th>重油剩余（mt）</th>
+                        <th>轻油剩余（mt）</th>
+                        <th>淡水剩余（mt）</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>长远轮</td>
+                        <td>1210</td>
+                        <td>在航报</td>
+                        <td>12-30 1200</td>
+                        <td>20</td>
+                        <td>/</td>
+                        <td>200</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>长远轮</td>
+                        <td>1210</td>
+                        <td>在航报</td>
+                        <td>12-30 1200</td>
+                        <td>20</td>
+                        <td>/</td>
+                        <td>200</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>长远轮</td>
+                        <td>1210</td>
+                        <td>在航报</td>
+                        <td>12-30 1200</td>
+                        <td>20</td>
+                        <td>/</td>
+                        <td>200</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>长远轮</td>
+                        <td>1210</td>
+                        <td>在航报</td>
+                        <td>12-30 1200</td>
+                        <td>20</td>
+                        <td>/</td>
+                        <td>200</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                </table>
+
+        </div>
+
+    </div>
+</div>
+
+<!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function () {
+        require(['controller/index']);
+    });
+</script>

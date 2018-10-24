@@ -1,0 +1,217 @@
+<!--# include virtual='/common/header.html' -->
+<title>航次动态</title>
+<style>
+    .tabClick{ background: #ffffff; overflow: hidden}
+    .tabClick li.active a{ color: RGBA(93, 120, 167, 1); transition: 0.1s; font-weight: bold ;}
+    .lineDiv{ background: RGBA(93, 120, 167, 1); height: 4px; width: 72px;margin-left: 19px;margin-top: -3px}
+    .com-model1 {width:906px;height:62px;background: rgba(255, 255, 255, 1);der-radius: 4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;float: right}
+    .com-model1 button{border: none;width:60px;height:22px;background:RGBA(93, 120, 167, 1);border-radius:4px;font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(255,255,255,1);float: right;margin-top: 20px;margin-right: 20px;}
+    .com-model1 ul li a {margin-left: 20px;margin-right: 29px;line-height: 62px;float: left;font-size: 18px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(153, 153, 153, 1);}
+    .hcdt-model2 a{font-size:16px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(51,51,51,1);margin-left: 15px;margin-top: 20px;display: block;float: left;}
+    .hcdt-model2 button{width:82px;height:21px;border-radius:4px;border:1px solid rgba(93,120,167,1);background-color: #FFFFFF;font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(93,120,167,1);margin-top: 20px;float: right;margin-right: 10px;}
+    .hcdt-model2{position: relative;float: left;width:234px;height:1380px;background:rgba(255,255,255,1);border-radius:4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .hcdt-ing{font-family:MicrosoftYaHei;font-weight:400;color:rgba(255,255,255,1);width:234px;height:90px;background:RGBA(93, 120, 167, 1);box-shadow:0px 1px 3px 0px rgba(39,39,65,0.11);margin-top: 56px;}
+    .dropdown-toggle em{display :inline-block;position: relative;width:20px;height:15px;}
+    .dropdown-toggle em::after{display: inline-block;content: " ";height: 6px;width: 6px;border-width: 0 2px 2px 0;border-color: #999999;border-style: solid;transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);transform-origin: center;position: absolute;top: 50%;right: 10px;margin-top: -3px;}
+    .hcdt-right1{position: relative;width: 906px;height:334px;background:rgba(255,255,255,1);border-radius:4px;box-shadow: 0 2px 10px 1px #ccc;float: right;margin-top: 20px;margin-left: 20px;}
+    .hcdt-right1 button{border: none;float: right;margin-top: 20px;margin-right: 20px;font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(255,255,255,1);width:60px;height:20px;background:RGBA(93, 120, 167, 1);border-radius:4px;}
+    .hcdt-right2{width: 906px;height:300px;background:rgba(255,255,255,1);border-radius:4px;box-shadow: 0 2px 10px 1px #ccc;float: right;margin-top: 20px;margin-left: 20px;}
+    .hcdt-right2 span {font-size:16px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(51,51,51,1);margin-left: 20px;margin-top: 20px;display: block;}
+    .track-rcol{ border-top:2px dashed RGBA(242, 242, 242, 1);height: 118px;width:876px;margin-top: 30px}
+    .track-list li{position: relative; padding: 29px 0 0 25px; line-height: 20px;  font-size:16px;  font-family:MicrosoftYaHei;  font-weight:400;  color:rgba(153,153,153,1);}
+    .track-list li.first{ padding-top: 10px; border-left-color: #fff;  font-size:16px;  font-family:MicrosoftYaHei;  font-weight:400;  color:rgba(51,51,51,1);}
+    .track-list li .node-icon{width:6px;height:6px;border-radius: 50%;border:4px solid RGBA(222, 222, 222, 1);position:absolute; margin-top: 8px;margin-left: -33px}
+    .track-list li.first .node-icon{width:7px;height:7px;border-radius: 50%;border:4px solid RGBA(93, 120, 167, 1);position:absolute;}
+    .track-list li .time{margin-right: 20px; position: relative; top: 4px; display: inline-block; vertical-align: middle;}
+    .track-list li .txt{max-width: 600px; position: relative; top: 4px; display: inline-block; vertical-align: middle;}
+    .track-list li.first .time{margin-right: 20px; }
+    .track-list li.first .txt{max-width: 600px; }
+    .track-list{height: 108px;width:876px;background: white;overflow: hidden;overflow-y: scroll;margin: 10px 0px 0 25px;position: relative;}
+    .aaaa{margin-left: 10px;border-left: 2px dashed RGBA(242, 242, 242, 1);}
+    .voyage{margin-top: 60px;height: 124px}
+    .voyage ul li{float: left;position: relative;width: 197px}
+    .voyage .begin{font-size:20px;  font-family:MicrosoftYaHei;  font-weight:400;  color:rgba(51,51,51,1);}
+    .voyage .over{font-size:20px;  font-family:MicrosoftYaHei;  font-weight:400;  color:rgba(51,51,51,1);}
+    .voyage .pass{font-size:20px;  font-family:MicrosoftYaHei;  font-weight:400;  color:rgba(153,153,153,1);}
+    .voyage .ing{font-size:20px;  font-family:MicrosoftYaHei;  font-weight:400;  font-weight:bold;color:rgba(93,120,167,1);}
+    .voyage .border{width:100%;height:1px;border-bottom:2px #eae5e5 dashed;position: absolute;margin-top:22px;}
+    .voyage .border em{width:6px;height:6px;border-radius: 50%;border:4px solid RGBA(222, 222, 222, 1);position:absolute;left:13px;margin-top:-5px;}
+    .voyage .border1{width:100%;height:1px;border-bottom:2px #eae5e5 dashed;position: absolute;margin-top:22px;}
+    .voyage .border1 em{width:6px;height:6px;border-radius: 50%;border:4px solid RGBA(93, 120, 167, 1);position:absolute;left:13px;margin-top:-5px;}
+    .voyage .small{color:rgba(153,153,153,1);font-size:12px;font-family:MicrosoftYaHei;  font-weight:400;margin-left: 39px}
+    .voyage .bottom{color:rgba(153,153,153,1);font-size:12px;font-family:MicrosoftYaHei;  font-weight:400;margin-top: 35px;margin-left: 2px;position: absolute}
+    .voyage .bottom1{color:rgba(153,153,153,1);font-size:14px;font-family:MicrosoftYaHei;  font-weight:400;margin-top: 63px;margin-left: 2px;position: absolute}
+    .voyage .bottom1 span{color:RGBA(93, 120, 167, 1);font-size:14px;font-family:MicrosoftYaHei;  font-weight:400;position: absolute}
+    .r-t em{width:8px;height:8px;background:rgba(93,120,167,1);border-radius:4px;display: inline-block;margin-right: 3px}
+    .r-t i{width:8px;height:8px;background:rgba(93,167,138,1);border-radius:4px;display: inline-block;margin-right: 3px}
+    .r-t{height: 20px;font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(51,51,51,1);float: right}
+</style>
+</head>
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+
+    <div class="container">
+        <div class="hcdt-model2">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            船舶<em></em>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" style="display: none">
+                            <li><a href="#">船A</a></li>
+                            <li><a href="#">船A</a></li>
+                            <li><a href="#">船A</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            状态<em></em>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu"  style="display: none">
+                            <li><a href="#">执行中</a></li>
+                            <li><a href="#">待开始</a></li>
+                            <li><a href="#">已结束</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button>+创建航次</button>
+            </div>
+            <div class="hcdt-ing">
+                <p style="font-size:14px;margin-left: 9px;padding-top: 5px;display: block">船A<span style="float: right;margin-right: 10px;font-size:12px;">1210航次</span></p>
+                <span style="font-size:12px;margin-left: 9px">航线：广州港-天津港</span><br>
+                <span style="font-size:12px;margin-left: 9px">货主：中电     货种：煤炭</span><br>
+                <span style="float: right;margin-right: 10px;font-size:12px;display: block">执行中</span>
+            </div>
+            <div class="hcdt-begin">
+                <p style="font-size:14px;margin-left: 9px;padding-top: 5px;display: block;color: RGBA(51, 51, 51, 1)">船A<span style="float: right;margin-right: 10px;font-size:12px;">1210航次</span></p>
+                <span style="font-size:12px;margin-left: 9px;color:rgba(102,102,102,1);">航线：广州港-天津港</span><br>
+                <span style="font-size:12px;margin-left: 9px;color:rgba(102,102,102,1);">货主：中电     货种：煤炭</span><br>
+                <span style="float: right;margin-right: 10px;font-size:12px;margin-top: -8px;display: block;color:rgba(93,167,138,1);">待开始</span>
+            </div>
+            <div style="width:234px;height:1px;background:RGBA(222, 222, 222, 1);opacity:0.88;margin-top: 13px"></div>
+            <div class="hcdt-over ">
+                <p style="font-size:14px;margin-left: 9px;padding-top: 5px;display: block;color: RGBA(51, 51, 51, 1)">船A<span style="float: right;margin-right: 10px;font-size:12px;">1210航次</span></p>
+                <span style="font-size:12px;margin-left: 9px;color:rgba(102,102,102,1);">航线：广州港-天津港</span><br>
+                <span style="font-size:12px;margin-left: 9px;color:rgba(102,102,102,1);">货主：中电     货种：煤炭</span><br>
+                <span style="float: right;margin-right: 10px;font-size:12px;margin-top: -8px;display: block;color:rgba(167,93,93,1);">已结束</span>
+            </div>
+            <div style="width:234px;height:1px;background:RGBA(222, 222, 222, 1);opacity:0.88;margin-top: 13px"></div>
+        </div>
+        <div class="com-model1">
+            <ul class="tabClick">
+                <li class="active"><a href="hcdt.html">航次动态</a></li>
+                <li><a href="hc-order.html">航次命令</a></li>
+                <li><a href="hc-plan.html">航次计划</a></li>
+                <li><a href="hc-report.html">船舶报告</a></li>
+            </ul>
+            <div class="lineDiv"><!--移动的div--></div>
+        </div>
+        <div class="hcdt-right1">
+            <button>结束</button>
+            <div class="voyage">
+                <ul>
+                    <li style="margin-left: 30px;">
+                        <span class="begin">上海港<span class="small">5天20小时</span></span>
+                        <div class="border"><em></em></div>
+                        <div class="bottom"></div>
+                        <div class="bottom1">计划出发<br><span>航次开始</span></div>
+                    </li>
+                    <li>
+                        <span class="pass">长江口<span class="small">5天20小时</span></span>
+                        <div class="border"><em></em></div>
+                        <div class="bottom">5天2时</div>
+                        <div class="bottom1">到达<br>离开</div>
+                    </li>
+                    <li>
+                        <span class="pass">外锚地</span>
+                        <div class="border"><em></em></div>
+                        <div class="bottom">5天2时</div>
+                        <div class="bottom1">到达<br>离开</div>
+                    </li>
+                    <li>
+                        <span class="ing">在航</span>
+                        <div class="border1"><em></em></div>
+                        <div class="bottom">12kn/120°</div>
+                    </li>
+                    <li style="width: 60px;">
+                        <span class="over">广州港</span>
+                        <div class="border"><em></em></div>
+                        <div class="bottom">3天5时</div>
+                        <div class="bottom1">预计到达<br><span>航次结束</span></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="track-rcol">
+                <div class="track-list">
+                    <ul class="aaaa">
+                        <li class="first">
+                            <i class="node-icon"></i>
+                            <span class="time">2016-03-10 18:07:15</span>
+                            <span class="txt">离开上海港</span>
+                        </li>
+                        <li>
+                            <i class="node-icon"></i>
+                            <span class="time">2016-03-10 18:07:15</span>
+                            <span class="txt">开始**航次</span>
+                        </li>
+                        <li>
+                            <i class="node-icon"></i>
+                            <span class="time">2016-03-10 18:07:15</span>
+                            <span class="txt">开始**航次</span>
+                        </li>
+                        <li>
+                            <i class="node-icon"></i>
+                            <span class="time">2016-03-10 18:07:15</span>
+                            <span class="txt">开始**航次</span>
+                        </li>
+                        <li>
+                            <i class="node-icon"></i>
+                            <span class="time">2016-03-10 18:07:15</span>
+                            <span class="txt">开始**航次</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hcdt-right2">
+            <div >
+                <span>AIS变化</span>
+                <div class="r-t"><em></em>航速 &nbsp;&nbsp;&nbsp;<i></i>航向&nbsp;&nbsp;</div>
+            </div>
+            <div id="container" style="min-width:200px;height:236px"></div>
+        </div>
+        <div class="hcdt-right2">
+            <div>
+                <span>风浪</span>
+                <div class="r-t"><em></em>风 &nbsp;&nbsp;&nbsp;<i></i>浪&nbsp;&nbsp;</div>
+            </div>
+            <div id="container1" style="min-width:200px;height:236px"></div>
+        </div>
+        <div class="hcdt-right2">
+            <div>
+                <span>主机转速&油水剩余</span>
+                <div class="r-t"><em></em>主机转速 &nbsp;&nbsp;&nbsp;<i></i>油水（三种）&nbsp;&nbsp;</div>
+            </div>
+            <div id="container2" style="min-width:200px;height:236px"></div>
+        </div>
+
+    </div>
+</div>
+
+<!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function () {
+        require(['controller/hcdt']);
+    });
+</script>

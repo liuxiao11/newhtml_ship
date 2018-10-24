@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>管船易</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="searchtitle" content="login">
+    <meta name="title" content="login">
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css" />-->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/global.css"/>
+    <script type="application/javascript">
+        var js_domain = "<!--# include virtual='/common/js_domain' -->";
+    </script>
+</head>
+
+<!-- Init Page Content Start -->
+<body>
+<div id="lianxi"><img src="images/icon/lianxi.png" alt=""><a href="#">联系我们</a></div>
+<div id="blanks"></div>
+<div id="login">
+    <form method="post" action="">
+        <div id="tu"><img src="images/login_logo.png" alt=""><span>管船易</span></div>
+        <p id="wz">请输入您的手机号/邮箱</p>
+        <input type="text" name="username" class="kuang"><br/>
+        <p id="wz1">请输入您的密码</p>
+        <input type="password" name="password" class="kuang"><br/>
+        <input type="submit" value="登陆" id="deng">
+    </form>
+    <a href="#" id="rz">没有账号？</a><a href="#" id="bz">联系我们</a><a href="#" id="wj">忘记密码？</a>
+</div>
+</body>
+<!-- Init Page Content End -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function(){
+        require(['controller/login']);
+    });
+</script>

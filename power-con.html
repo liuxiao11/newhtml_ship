@@ -1,0 +1,228 @@
+<!--# include virtual='/common/header.html' -->
+<title>用户管理</title>
+<style>
+    /* 选项卡 */
+    .row-fluid1{width:1160px;height:62px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;margin:30px 0 30px 0;line-height:62px;}
+    .row-fluid1 ul li{display:inline-block;color:#999;font-size:17px;margin:0 30px;cursor: pointer}
+    .row-fluid1 ul li a{color:#999;}
+    .row-fluid1 ul li a:hover{color:#5D78A7;border-bottom:4px solid #5D78A7;height:58px;font-weight: 600;}
+    .row-fluid1 ul li.active a{color:#5D78A7;border-bottom:4px solid #5D78A7;height:58px;font-weight: 600;}
+    /* 角色列表 */
+    .row-fluid2{width:234px;min-height:1000px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;display:inline-block}
+    .row-fluid2 .fluid2-title{height:56px;border-bottom:1px solid #ccc;line-height: 56px;padding:0 10px;}
+    .row-fluid2 .fluid2-title p{font-size:18px;color:#333;float: left;font-weight: 600}
+    .row-fluid2 .fluid2-title em{font-size:14px;color:#5D78A7;float: right;cursor: pointer}
+    .row-fluid2 .fluid2-item{font-size:15px;color:#333333;}
+    .row-fluid2 .fluid2-item .fluid2-group-list ul{background:#fff;}
+    .row-fluid2 .fluid2-item .fluid2-group-list li{padding:0 10px;height:34px;line-height: 34px;margin:10px 0;color:#333;cursor: pointer;}
+    .row-fluid2 .fluid2-item .fluid2-group-list li:hover{color:#fff;background: #5D78A7}
+    .row-fluid2 .fluid2-item .fluid2-group-list li:hover p{color:#fff;}
+    .row-fluid2 .fluid2-item .fluid2-group-list li.active{color:#fff;background: #5D78A7}
+    .row-fluid2 .fluid2-item .fluid2-group-list li.active p{color:#fff;}
+    .row-fluid2 .fluid2-item .fluid2-group-list p{color:#333;display: inline-block;}
+    .row-fluid2 .fluid2-item .fluid2-group-list em{float: right}
+    /* 内容 */
+    .row-fluid3{width:900px;min-height:1000px;float: right;}
+    .row-fluid3 .fluid3-top{width:860px;height:56px;line-height:56px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;padding:0 20px;}
+    .row-fluid3 .fluid3-top-title{font-size:16px;color:#333;font-weight: 600;display:inline-block}
+    .row-fluid3 .fluid3-top-menu{font-size:15px;color:#333;display:inline-block;float: right;position:relative;}
+    .row-fluid3 .fluid3-top-menu div{color:#5D78A7;display:inline-block;margin:16px 10px;line-height: 1.5;cursor: pointer;padding:0 20px;height:22px;border:1px solid #5D78A7;border-radius:3px}
+    .row-fluid3 .fluid3-top-menu div.fluid3-menu-edit{background:#5D78A7;color:#fff;}
+    .row-fluid3 .fluid3-table-box{color:#333;width:860px;min-height:210px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;margin-top:30px;font-size:16px;padding:20px;}
+    .row-fluid3 .fluid3-table-box table{width:100%;}
+    .row-fluid3 .fluid3-table-box table tr td{display:inline-block;text-align: center}
+    .row-fluid3 .fluid3-table-box .fluid3-table-title{color:#333;font-size:16px;font-weight: 600;text-align: left;margin-bottom:20px;}
+    .row-fluid3 .fluid3-table-box .table-group-title{width:138px;height: 38px;line-height: 38px;background:#EEF1F6;font-size:14px;border-bottom:1px solid #EBEBEB}
+    .row-fluid3 .fluid3-table-box .table-group-list{width:100px;font-size:14px;}
+    .row-fluid3 .fluid3-table-box tr:nth-child(3n),.row-fluid3 .fluid3-table-box tr:nth-child(1){background:#F6F6F6}
+    .row-fluid3 .fluid3-table-box .table-group-list input{cursor:pointer;width: 13px;height: 13px;background-color: #fff;-webkit-appearance:none;border: 1px solid #c9c9c9;border-radius: 2px;outline: none;vertical-align: text-bottom;}
+    .row-fluid3 .fluid3-table-box .table-group-list input[type=checkbox]:checked{
+        background: url("<!--# include virtual='/common/img_domain' -->checked-bg.png")no-repeat center;
+    }
+
+</style>
+</head>
+
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+    <div class="container">
+        <!-- 选项卡 -->
+        <div class="row-fluid1">
+            <ul>
+                <li class=""><a href="<!--# include virtual='/common/bd_domain' -->user.html">用户管理</a></li>
+                <li class="active"><a href="javascript:void(0)">权限管理</a></li>
+            </ul>
+        </div>
+        <!-- 角色列表 -->
+        <div class="row-fluid2">
+            <div class="fluid2-title">
+                <p>角色列表</p>
+                <em>+新增子部门</em>
+            </div>
+            <div class="fluid2-item">
+                <div class="fluid2-group-list">
+                    <ul>
+                        <li class="active">
+                            <p>超级管理员</p>
+                        </li>
+                        <li>
+                            <p>海务主管</p>
+                        </li>
+                        <li>
+                            <p>海务经理</p>
+                        </li>
+                        <li>
+                            <p>未分配</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 内容 -->
+        <div class="row-fluid3">
+            <div class="fluid3-top">
+                <p class="fluid3-top-title">海务主管 <em>ID 1003</em></p>
+                <div class="fluid3-top-menu">
+                    <div class="fluid3-menu-edit">编辑</div>
+                    <div class="">取消</div>
+                </div>
+            </div>
+            <div class="fluid3-table-box">
+                <div class="fluid3-table-title">系统设置</div>
+                <table cellspacing="0" cellpadding="5" border="0">
+                    <tbody>
+                    <tr>
+                        <td class="table-group-title">公司信息</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">用户管理</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">权限管理</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fluid3-table-box">
+                <div class="fluid3-table-title">航次管理</div>
+                <table cellspacing="0" cellpadding="5" border="0">
+                    <tbody>
+                    <tr>
+                        <td class="table-group-title">航次命令</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">航次计划</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">航次监控</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fluid3-table-box">
+                <div class="fluid3-table-title">船舶报告</div>
+                <table cellspacing="0" cellpadding="5" border="0">
+                    <tbody>
+                    <tr>
+                        <td class="table-group-title">船舶报告</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">模板设置</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-group-title">自动报告设置</td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />查看
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />新建
+                        </td>
+                        <td class="table-group-list">
+                            <input type="checkbox" />修改
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function(){
+        require(['controller/user']);
+    });
+</script>

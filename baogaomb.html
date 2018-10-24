@@ -1,0 +1,331 @@
+<!--# include virtual='/common/header.html' -->
+<title>船舶报告模板</title>
+<style>
+    .tabClick {background: #ffffff;overflow: hidden}
+    .tabClick li.active a {color: RGBA(93, 120, 167, 1);transition: 0.1s;font-weight: bold;}
+    .lineDiv {background: RGBA(93, 120, 167, 1);height: 4px;width: 108px;margin-left: 19px;margin-top: -3px}
+    .com-model1 {width: 1160px;height: 62px;background: rgba(255, 255, 255, 1);border-radius: 4px;box-shadow: 0 2px 10px 1px #ccc;margin-top: 20px;}
+    .com-model1 button {border: none;width: 60px;height: 22px;background: RGBA(93, 120, 167, 1);border-radius: 4px;font-size: 12px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);float: right;margin-top: 20px;margin-right: 20px;}
+    .com-model1 ul li a {margin-left: 20px;margin-right: 29px;line-height: 62px;float: left;font-size: 18px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(153, 153, 153, 1);}
+    .bgwz1{width: 1160px;height: 17px;float: left;margin-top: 18px;margin-left: 20px;}
+    .baomb-model1{width:1160px;height:56px;background:rgba(255,255,255,1);border-radius:4px;box-shadow:0px 1px 3px 0px rgba(39,39,65,0.1);margin-top: 20px;}
+    .baomb-model1 a{font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(93,120,167,1);float: left;}
+    .baomb-model1 button{border: none;width:60px;height:22px;background:RGBA(93, 120, 167, 1);border-radius:4px;font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(255,255,255,1);margin-left: 29px;}
+    .pow-model1{width:1160px;height:276px;border-radius:4px;background:rgba(255,255,255,1);margin-top: 20px;box-shadow: 0 2px 10px 1px #ccc;}
+    .pow-model1 table tr th {font-size: 16px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);background: RGBA(93, 120, 167, 1);border-width: 1px;padding: 8px;border-color: RGBA(255, 255, 255, 1);}
+    .pow-model1 table tr td {font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(21, 43, 76, 1);padding: 8px;border: none;}
+    .pow-model1 table tr:nth-child(odd) {background: RGBA(246, 246, 246, 1);}
+    .pow-model1 table tr:nth-child(even) {background: #fff;}
+    /*表模块添加弹窗2*/
+    .reportPop .popAlert{width: 606px;height: 540px}
+    .reportPop table tr th {font-size: 16px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(255, 255, 255, 1);background: RGBA(93, 120, 167, 1);border-width: 1px;border-color: RGBA(255, 255, 255, 1);padding: 8px}
+    .reportPop table tr td {font-size: 14px;font-family: MicrosoftYaHei;font-weight: 400;color: rgba(21, 43, 76, 1);border: none;padding: 8px}
+    .reportPop table tr:nth-child(odd) {background: RGBA(246, 246, 246, 1);}
+    .reportPop table tr:nth-child(even) {background: #fff;}
+    .reportPop .popCenter2{ height: 281px;width: 573px;margin:20px;font-size:14px;color:#333;border-radius: 5px;box-shadow: 0 1px 10px 0 #ccc;}
+    /*添加字段弹窗*/
+    .feildAdd .popAlert{width:398px;height: 598px;background:#fff;margin:200px auto;}
+    .feildAdd .popcontent{text-align: center;font-size:14px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(51,51,51,1);}
+    .feildAdd .popcontent table{margin-left: 33px;margin-top: 7px}
+    .feildAdd .popcontent table tr td{padding: 7px 0;}
+    .feildAdd .popcontent table input{height: 15px;border:1px solid rgba(222,222,222,1);border-radius:4px;font-size:12px;}
+    .feildAdd .popcontent .radio input{margin:0 10px 0 35px;border:0;display:inline-block;cursor: pointer;width: 11px;height: 11px;background: url("./css/images/radio-1.png")no-repeat center;-webkit-appearance: none;border-radius: 2px;outline: none;}
+    .feildAdd .popcontent .radio input:nth-child(1),.popAlert .radio input:nth-child(2){margin-left:10px}
+    .feildAdd .popcontent .radio input[type=radio]:checked{background: url("./css/images/radio-2.png")no-repeat center;}
+    .feildAdd .popAlertBox .popBtnBox button{width:58px;height: 22px;line-height: 20px;font-size:12px;text-align: center;border-radius: 3px;border:1px solid #5d78a7;background: #5d78a7;color:#fff;margin-right: 65px;cursor: pointer}
+    .feildAdd .popcontent select{width:320px;height:22px;border:1px solid rgba(222,222,222,1);border-radius:4px;margin-top: 8px}
+    .track-rcol{ background:RGBA(255, 255, 255, 1);box-shadow:0px 1px 3px 0px rgba(0,0,0,0.11);height: 64px;width:252px;margin: 10px 0px;}
+    .track-list{height: 64px;width:252px;background: white;overflow: hidden;overflow-y: scroll;position: relative;}
+    .table{margin-bottom: 8px}
+    .table input[type=text]{width: 90px;margin-right: 10px;border:1px solid rgba(222,222,222,1);border-radius:4px;}
+</style>
+</head>
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+
+    <div class="container">
+        <div class="com-model1">
+            <ul class="tabClick">
+                <li class="active"><a href="baogaomb.html">船舶报告模板</a></li>
+                <li><a href="ordermb.html">航次命令模板</a></li>
+                <li><a href="">航次计划模板</a></li>
+            </ul>
+            <div class="lineDiv"><!--移动的div--></div>
+        </div>
+
+        <div class="baomb-model1">
+            <div class="bgwz1">
+                <span style="font-size:16px;font-family:MicrosoftYaHei-Bold;font-weight:bold;color:rgba(51,51,51,1);float: left">
+                报告名称：正午报
+                </span>
+                <a href="#" style="margin-left: 622px;" id="reportAdd">+添加新模块</a>
+                <a href="#" style="margin-left: 30px;" id="feildAdd">+添加新字段</a>
+                <button>预览</button>
+                <button><img src="images/slice.png"> 返回</button>
+            </div>
+        </div>
+        <div class="pow-model1">
+            <div>
+                <table border="0" style="width: 100%;text-align: center;margin-top: 19px">
+                    <tr>
+                        <th>名称</th>
+                        <th>字段输入方式</th>
+                        <th>顺序</th>
+                        <th>输入设置内容</th>
+                        <th>是否必填</th>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 表模块弹窗1 -->
+
+<div style="display: none" class="reportPop1">
+        <div class="popAlertBox">
+            <div class="popAlert">
+                <div class="popTitle">
+                    <p>添加表模块</p>
+                    <em>x</em>
+                </div>
+                <div class="popCenter">
+                    <div>
+                        表模块名称:<input type="text" placeholder="必填">
+                    </div>
+                    <div>
+                        表模块顺序:<input type="text" placeholder="必填">
+                    </div>
+                </div>
+                <p class="popText">数据组包含字段设置</p>
+                <div class="popCenter popCenter2">
+                    <ul>
+                        <li>
+                            <p><em></em>动态信息</p>
+                            <div class="allBtn">全选该组</div>
+                            <div class="checkbox">
+                                <input type="checkbox" name="">经度
+                                <input type="checkbox" name="">纬度
+                                <input type="checkbox" name="">航向
+                                <input type="checkbox" name="">航速
+                            </div>
+                        </li>
+                        <li>
+                            <p><em></em>航次信息</p>
+                            <div class="allBtn">全选该组</div>
+                            <div class="checkbox">
+                                <input type="checkbox" name="">离港状态
+                                <input type="checkbox" name="">离港时间
+                                <input type="checkbox" name="">航行状态
+                                <input type="checkbox" name="">主机转速（RPM）
+                                <input type="checkbox" name="">离港状态
+                                <input type="checkbox" name="">离港时间
+                                <input type="checkbox" name="">航行状态
+                                <input type="checkbox" name="">主机转速（RPM）
+                            </div>
+                        </li>
+                        <li>
+                            <p><em></em>装卸信息</p>
+                            <div class="allBtn">全选该组</div>
+                            <div class="checkbox">
+                                <input type="checkbox" name="">开装时间
+                                <input type="checkbox" name="">已装货量
+                                <input type="checkbox" name="">开卸时间
+                                <input type="checkbox" name="">已卸货量
+                                <input type="checkbox" name="">预计完货时间
+                            </div>
+                        </li>
+                        <li>
+                            <p><em></em>其他</p>
+                            <div class="allBtn">全选该组</div>
+                            <div class="checkbox">
+                                <input type="checkbox" name="">备注
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popBtnBox">
+                    <button type="button" class="btn btn-primary" id="reportOk1">确定</button>
+                    <button type="button" class="btn btn-default">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 确认表模块弹窗-->
+<div class="reportPop" style="display: none">
+    <div class="popAlertBox">
+        <div class="popAlert">
+            <div class="popTitle">
+                <p>确认表模块</p>
+                <em>x</em>
+            </div>
+            <div class="popCenter">
+                <div>
+                    表模块名称:<input type="text" placeholder="" value="动态信息">
+                </div>
+                <div>
+                    表模块顺序:<input type="text" placeholder="" value="2">
+                </div>
+            </div>
+            <p class="popText">数据组包含字段设置</p>
+            <div class="popCenter2">
+                <table border="0" style="text-align: center;width: 100%">
+                    <tr>
+                        <th>名称</th>
+                        <th>字段输入方式</th>
+                        <th>顺序</th>
+                        <th>输入设置内容</th>
+                        <th>是否必填</th>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>报告时间</td>
+                        <td>时间</td>
+                        <td>1</td>
+                        <td>-</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popBtnBox">
+                <button type="button" class="btn btn-primary" id="reportOk">确认</button>
+                <button type="button" class="btn btn-default">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--添加字段-->
+<div class="feildAdd" style="display: none">
+    <div class="popAlertBox">
+        <div class="popAlert">
+            <div class="popTitle">
+                <p>新增部门</p>
+                <em>x</em>
+            </div>
+            <div class="popcontent">
+                <table>
+                    <tr>
+                        <td>字段名称：</td>
+                        <td><input type="text" value="" placeholder="必填"></td>
+                    </tr>
+                    <tr>
+                        <td  style="vertical-align: top">字段输入方式：</td>
+                        <td style="text-align: left">
+                            <div class="radio">
+                                <input type="radio">文本（含数字）
+                            </div>
+                            <div class="radio">
+                                <input type="radio">时间选择
+                            </div>
+                            <div class="radio">
+                                <input type="radio">多选文本
+                                <div class="track-rcol" style="display: none">
+                                    <div class="track-list">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="radio">
+                                <input type="radio">表格
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="table"  style="display: none">
+                    表头字段1: <input type="text" style=""> 
+                    <select name="" style="width: 170px;border:1px solid rgba(222,222,222,1);border-radius:4px;">
+                        <option value="">多选文本框</option>
+                        <option value="">文本框</option>
+                        <option value="">时间选择</option>
+                    </select><br>
+                    <div class="track-rcol" style="margin-left: 41px;width: 337px">
+                        <div class="track-list" style="width: 337px">
+                        </div>
+                    </div>
+                    表头字段2: <input type="text" style="">
+                    <select name="" style="width: 170px;border:1px solid rgba(222,222,222,1);border-radius:4px;">
+                        <option value="">多选文本框</option>
+                        <option value="">文本框</option>
+                        <option value="">时间选择</option>
+                    </select>
+                </div>
+                <span style="margin-right: 130px">请选择字段要添加进入的数据组:</span>
+                <select name="" id="">
+                    <option value="">动态信息</option>
+                    <option value="">航次信息</option>
+                    <option value="">装卸信息</option>
+                    <option value="">货物信息</option>
+                    <option value="">油水信息</option>
+                    <option value="">其他</option>
+                </select>
+            </div>
+            <div class="popBtnBox" style="margin-top: 20px">
+                <button type="button" class="btn btn-primary" id="feildOK">确认</button>
+                <button type="button" class="btn btn-default">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function () {
+        require(['controller/baogaomb']);
+    });
+</script>

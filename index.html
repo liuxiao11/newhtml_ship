@@ -1,0 +1,400 @@
+<!--# include virtual='/common/header.html' -->
+<title>管船易-首页</title>
+<style>
+    .container .row-title{margin:30px 0 20px 0}
+    .container .row-title span{font-size:25px;font-weight:600;color:#333333}
+    /* 我的任务 */
+    .row-fluid1{width:1160px;height:235px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;padding:50px 0 65px 0}
+    .row-fluid1 ul li{display:inline-block;color:#333;font-size:17px;font-weight: 600;margin-left:120px;}
+    .row-fluid1 ul li.ul-li1{margin-left:40px;}
+    .row-fluid1 ul li thead tr th{width:90px;margin-left:10px;}
+    .row-fluid1 ul li table{margin-top:35px;text-align: center}
+    .row-fluid1 ul li thead tr{font-size:13px;}
+    .row-fluid1 ul li thead tr th{border-bottom:2px #f2f2f2 dashed}
+    .row-fluid1 ul li thead tr .li-th1{color:#a75d64;width:60px;margin-left:30px;}
+    .row-fluid1 ul li thead tr .li-th2{color:#5d78a7}
+    .row-fluid1 ul li tbody{font-size:14px;font-weight: 500}
+    .row-fluid1 ul li tbody tr{line-height: 2.5}
+    .row-fluid1 ul li tbody button{width: 64px;height: 20px;border: none;border-radius: 4px;font-size: 10px;font-weight: 400;color: rgba(255,255,255,1);}
+    .row-fluid1 ul li tbody button.ks{background: rgba(117,79,92,1)}
+    .row-fluid1 ul li tbody button.djs{background: rgba(78,78,113,1)}
+    .row-fluid1 ul li tbody button.sp{background: rgba(85,125,121,1)}
+    /* 最新动态 */
+    .row-fluid2{width:1090px;height:156px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;padding:50px 30px 65px 40px}
+    .row-fluid2 a{color:#4984de}
+    .row-fluid2 .fluid2-title{font-size:17px;}
+    .row-fluid2 .fluid2-title p{display:inline-block;color:#333;font-weight: 600;}
+    .row-fluid2 .fluid2-title img{width:24px;vertical-align: middle;}
+    .row-fluid2 .fluid2-title span{float: right;color:#999999;font-size:14px;cursor:pointer}
+    .row-fluid2 .fluid2-item table{font-size:13px;color:#333;margin-top:35px;}
+    .row-fluid2 .fluid2-item table tr .fluid2-item-list{width:250px;height:30px;}
+    .row-fluid2 .fluid2-item table tr .fluid2-item-list:nth-child(2){width:100px;}
+    .row-fluid2 .fluid2-item table tr .fluid2-item-list:nth-child(3){width:180px;}
+    /* 船舶动态 */
+    .row-fluid3{width:1090px;background:#fff;border-radius: 5px;box-shadow: 0 2px 10px 1px #ccc;padding:50px 30px 65px 40px}
+    .row-fluid3 .fluid3-title{font-size:17px;}
+    .row-fluid3 .fluid3-title p{display:inline-block;color:#333;font-weight: 600;}
+    .row-fluid3 .content .fluid3-item-box{position:relative;width:1090px;height:260px;border-bottom:2px #eae5e5 dashed;margin-top:35px;}
+    .row-fluid3 .content .fluid3-item-title{padding:65px 0 0 0;width:125px;display:inline-block;text-align: center;float: left}
+    .row-fluid3 .content .fluid3-item-title p{color:#5d78a7;font-size: 17px;height:36px;line-height: 1}
+    .row-fluid3 .content .fluid3-item-title em,.row-fluid3 .content .fluid3-item-title i{color:#333;font-size: 13px;font-style: normal;display:block;height:20px;line-height: 1}
+    .row-fluid3 .content .fluid3-item-title p{color:#90a0bf;font-size: 17px;}
+    .row-fluid3 .fluid3-item-box ul{display:inline-block;margin-left:76px;}
+    .row-fluid3 .fluid3-item-box ul li{display:inline-block;position: relative}
+    .row-fluid3 .item-content{width:145px;height:186px;border-radius: 20px;border:2px #eae5e5 dashed;padding:14px 14px 0 10px;margin-right:20px;}
+    .row-fluid3 .item-content p{font-size:12px;height:20px;line-height: 1;color:#999;}
+    .row-fluid3 .item-content p.item-status{height:38px;font-size:14px}
+    .row-fluid3 .item-content p.item-2{height:40px;}
+    .row-fluid3 .item-content p.item-4{height:38px;line-height: 1.5;}
+    .row-fluid3 .item-content p.item-5{display:inline-block}
+    .row-fluid3 .item-content p.item-6{float: right;color:#7a8eb4;cursor: pointer;}
+    .row-fluid3 .item-clause{width:160px;height: 33px;line-height: 2.5;}
+    .row-fluid3 .item-clause p{font-size:12px;color:#999;display: inline-block}
+    .row-fluid3 .item-clause p.item-8{float: right;color:#a75d64;cursor: pointer;}
+    .row-fluid3 .item-border{width:100%;height:1px;border-bottom:2px #eae5e5 dashed;position: absolute;top:40px;}
+    .row-fluid3 .item-border em{width:10px;height:10px;background:#eae5e5;display:block;border-radius: 50%;position:absolute;left:13px;margin-top:-4px;}
+    .row-fluid3 .active .item-content{box-shadow: 0 2px 17px 2px #cccccc8c;border:0;width:186px;height:200px;background:url("<!--# include virtual='/common/img_domain' -->item-content-bg.png") ;background-size:100% 100%;}
+    .row-fluid3 .active .item-content p{color:#494949;font-size:14px;}
+    .row-fluid3 .active .item-content p.item-status{height:22px;background:#5d78a7;color:#fff;width:45px;text-align:center;border-radius: 5px;line-height: 22px;}
+    .row-fluid3 .active .item-content p.item-1{height:45px;line-height: 5;color:#5d78a7}
+    .row-fluid3 .active .item-content p.item-2{color:#a75d64}
+    .row-fluid3 .active .item-content p.item-5{line-height: 45px;}
+    .row-fluid3 .active .item-content p.item-6{line-height: 45px;color:#5d78a7}
+    .row-fluid3 .active .item-border{top:50px;}
+    .row-fluid3 .active .item-clause{width:200px;}
+    .row-fluid3 .item-add{vertical-align: top;cursor:pointer;}
+    .row-fluid3 .item-add .item-content{text-align:center;box-shadow: 0 1px 10px 1px #cccccc8c;margin:0;border:0;width:165px;height:200px;background:url("<!--# include virtual='/common/img_domain' -->item-content-bg.png") ;background-size:100% 100%;}
+    .row-fluid3 .item-add .item-content img{margin-top:60px;}
+    .row-fluid3 .fluid3-sidebar-btn{position: absolute;top:100px;left:150px;width:900px;}
+    .row-fluid3 .fluid3-sidebar-btn div{cursor: pointer;width: 13px;height: 19px;background: url("<!--# include virtual='/common/img_domain' -->btnys.png") no-repeat 0 0;}
+    .row-fluid3 .fluid3-sidebar-btn .fluid3-sidebar-btn-left{float: left}
+    .row-fluid3 .fluid3-sidebar-btn .fluid3-sidebar-btn-right{background-position: -14px 0;float: right}
+    .row-fluid3 .bottom-border-radius{width:7px;height:7px;border-radius: 50%;border:5px solid #a75d64;position:absolute;bottom:-7px}
+    .row-fluid1,.row-fluid2,.row-fluid3{margin:33px 0  0;}
+</style>
+</head>
+<body>
+<!-- 顶部 -->
+<!--# include virtual='/common/nav_top.html' -->
+<div class="container-box">
+
+    <!-- 侧边栏 -->
+    <!--# include virtual='/common/sidebar_left.html' -->
+
+    <div class="container">
+        <div class="row-title">
+            <span>欢迎你，那些年~</span>
+        </div>
+        <div class="row-fluid1">
+            <ul class="fluid1-ul">
+                <li class="ul-li1">我的任务
+                    <table cellspacing="0" cellpadding="5" border="0" style="height: 150px;">
+                        <thead>
+                            <tr class="li-tr">
+                                <th class="li-th1">名称</th>
+                                <th class="li-td1 li-th2">详情</th>
+                                <th class="li-td1 li-th3">状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td  class=""></td>
+                                <td  class="li-td1"></td>
+                                <td  class="li-td1"></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古上海</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="ks">待开始</button></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="djs">待结束</button></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="sp">待审批</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="ul-li2">我的申请
+                    <table cellspacing="0" cellpadding="5" border="0" style="height: 150px;">
+                        <thead>
+                            <tr class="li-tr">
+                                <th class="li-th1">名称</th>
+                                <th class="li-td1 li-th2">详情</th>
+                                <th class="li-td1 li-th3">状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td  class=""></td>
+                                <td  class="li-td1"></td>
+                                <td  class="li-td1"></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="ks">待开始</button></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="djs">待结束</button></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><button class="sp">待审批</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="ul-li3">预警信息
+                    <table cellspacing="0" cellpadding="5" border="0" style="height: 150px;">
+                        <thead>
+                            <tr class="li-tr">
+                                <th class="li-th1">名称</th>
+                                <th class="li-td1 li-th2">详情</th>
+                                <th class="li-td1 li-th3">状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td  class=""></td>
+                                <td  class="li-td1"></td>
+                                <td  class="li-td1"></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><span>两天后到期</span></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><span>两天后到期</span></td>
+                            </tr>
+                            <tr>
+                                <td  class="">中古</td>
+                                <td  class="li-td1">1245航次</td>
+                                <td  class="li-td1"><span>两天后到期</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row-fluid2">
+            <div class="fluid2-title">
+                <p>最新动态</p>
+                <img src="<!--# include virtual='/common/img_domain' -->icon/zxdt.png">
+                <span>更多 v </span>
+            </div>
+            <div class="fluid2-item">
+                <table cellspacing="0" cellpadding="5" border="0">
+                    <tr>
+                        <td class="fluid2-item-list item-date">2018-2-12 12：00</td>
+                        <td class="fluid2-item-list item-user">张三</td>
+                        <td class="fluid2-item-list item-group">航运部</td>
+                        <td class="fluid2-item-list item-change"><a href="javascript:void(0)">创建了新航次</a></td>
+                    </tr>
+                    <tr>
+
+                        <td class="fluid2-item-list item-date">2018-2-12 12：00</td>
+                        <td class="fluid2-item-list item-user">张三</td>
+                        <td class="fluid2-item-list item-group">航运部</td>
+                        <td class="fluid2-item-list item-change"><a href="javascript:void(0)">创建了新航次</a></td>
+                    </tr>
+                    <tr>
+
+                        <td class="fluid2-item-list item-date">2018-2-12 12：00</td>
+                        <td class="fluid2-item-list item-user">张三</td>
+                        <td class="fluid2-item-list item-group">航运部</td>
+                        <td class="fluid2-item-list item-change"><span>上报了计划</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row-fluid3">
+            <div class="fluid3-title">
+                <p>船舶动态</p>
+            </div>
+            <div class="content">
+                <div class="fluid3-item-box">
+                    <div class="fluid3-item-title">
+                        <p>中谷上海</p>
+                        <em>1201航次</em>
+                        <i>上海港-广州港</i>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li class="active">
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li class="item-add">
+                            <div class="item-content">
+                                <img src="<!--# include virtual='/common/img_domain' -->item-add.png" alt="">
+                                <p>新增报告</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="fluid3-sidebar-btn">
+                        <div class="fluid3-sidebar-btn-left"></div>
+                        <div class="fluid3-sidebar-btn-right"></div>
+                    </div>
+                    <div class="bottom-border-radius"></div>
+                </div>
+
+                <div class="fluid3-item-box">
+                    <div class="fluid3-item-title">
+                        <p>中谷上海</p>
+                        <em>1201航次</em>
+                        <i>上海港-广州港</i>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li class="active">
+                            <div class="item-content">
+                                <p class="item-status">离港</p>
+                                <p class="item-1">名称：上海港 北电1泊</p>
+                                <p class="item-2">时间：11-15 12:00</p>
+                                <p class="item-3">吃水F/M/A: 12/13/14</p>
+                                <p class="item-4">油水剩余: FO120/DO140/FW20</p>
+                                <p class="item-5">备注</p>
+                                <p class="item-6">查看</p>
+                            </div>
+                            <div class="item-clause">
+                                <p class="item-7">添加备忘：</p>
+                                <p class="item-8">修改</p>
+                            </div>
+                            <div class="item-border"><em></em></div>
+                        </li>
+                        <li class="item-add">
+                            <div class="item-content">
+                                <img src="<!--# include virtual='/common/img_domain' -->item-add.png" alt="">
+                                <p>新增报告</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="fluid3-sidebar-btn">
+                        <div class="fluid3-sidebar-btn-left"></div>
+                        <div class="fluid3-sidebar-btn-right"></div>
+                    </div>
+                    <div class="bottom-border-radius"></div>
+                </div>
+
+                <div class="fluid3-item-box">
+                    <div class="fluid3-item-title">
+                        <p>中谷上海</p>
+                        <em>1201航次</em>
+                        <i>上海港-广州港</i>
+                    </div>
+                    <ul>
+                        <li class="item-add">
+                            <div class="item-content">
+                                <img src="<!--# include virtual='/common/img_domain' -->item-add.png" alt="">
+                                <p>新增报告</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="fluid3-sidebar-btn">
+                        <div class="fluid3-sidebar-btn-left"></div>
+                        <div class="fluid3-sidebar-btn-right"></div>
+                    </div>
+                    <div class="bottom-border-radius"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--# include virtual='/common/footer.html' -->
+</body>
+</html>
+<script src="<!--# include virtual='/common/js_domain' -->require.js"></script>
+<script type="application/javascript">
+    require(["<!--#include virtual='/common/js_domain'-->config.js?v=<!--#include virtual='/common/version'-->"], function(){
+        require(['controller/index']);
+    });
+</script>
